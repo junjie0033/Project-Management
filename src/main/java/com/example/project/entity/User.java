@@ -17,14 +17,16 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @Column(unique = true)
     private String username;
 
     private String password;
 
-    private String email;
+    private String phone;
+
+    private int  balance;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();
@@ -33,10 +35,11 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String password, String email,Set<Authority> authorities) {
+    public User(String username, String password, String phone,int balance,Set<Authority> authorities) {
         this.username = username;
         this.password = password;
-        this.email = email;
+        this.phone = phone;
+        this.balance=balance;
         this.authorities = authorities;
     }
 

@@ -92,7 +92,7 @@ public class AuthController {
         map.put("message", "登陆成功，欢迎" + user.getUsername() + "回来");
         map.put("id", user.getId());
         map.put("username", user.getUsername() + "");
-        map.put("email", user.getEmail());
+        map.put("phone", user.getPhone());
 
         return ResponseEntity.ok(map);
 

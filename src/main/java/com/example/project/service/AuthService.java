@@ -32,7 +32,7 @@ public class AuthService {
             System.out.println(request.getUsername() + " " + request.getPassword() + " ");
             String password = passwordEncoder.encode(request.getPassword());
             HashSet<Authority> set = new HashSet<>();
-            User user = new User(request.getUsername(), password, request.getEmail(), set);
+            User user = new User(request.getUsername(), password, request.getPhone(),0, set);
             userRepository.save(user);
             return userRepository.findByUsername(user.getUsername());
         }
