@@ -78,7 +78,7 @@ public class AdminController {
         return null;
     }
 
-    @RequestMapping(value = "continueRent")
+    @RequestMapping(value = "/continueRent")
     public void continueRent(@RequestParam("id") String carId) {
         adminService.continueRent(Integer.parseInt(carId));
     }
