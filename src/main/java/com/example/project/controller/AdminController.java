@@ -28,7 +28,7 @@ public class AdminController {
     }
 
 
-    //获取已经租出去的车，不管是个人还是私有,改成了未出租的车，方便你删除
+    //不管是个人还是私有,改成了未出租的车，方便你删除
     @RequestMapping(value = "/getRenderCar")
     public ResponseEntity<?> getRentedCar() {
         HashMap<String, Object> map = new HashMap<>();
