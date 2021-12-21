@@ -3,6 +3,7 @@ package com.example.project.service;
 import com.example.project.entity.Car;
 import com.example.project.entity.Fine;
 import com.example.project.entity.Record;
+
 import com.example.project.respository.CarRepository;
 import com.example.project.respository.FineRepository;
 import com.example.project.respository.RecordRepository;
@@ -47,20 +48,10 @@ public class AdminService {
     }
 
     public void addCar(Car car, MultipartFile image) throws IOException {
-        moveImageToResource(image);
+        Utils.moveImageToResource(image);
         carRepository.save(car);
     }
 
-    private void moveImageToResource(MultipartFile image) throws IOException {
-        File uploadDir = new File("/usr/local/fengqihang/static/img/");
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
-        }
-        //TODO
-        File uploadFile = new File("/usr/local/fengqihang/static/img/"
-                + image.getOriginalFilename());
-        image.transferTo(uploadFile);
-    }
 
 
     public void returned(int carId) {

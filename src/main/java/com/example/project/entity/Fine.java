@@ -31,6 +31,12 @@ public class Fine {
 
     }
 
+    public Fine(int orderId, double money, String reason) {
+        this.orderId = orderId;
+        this.money = money;
+        this.reason = reason;
+    }
+
     public Fine(int userId, int orderId, double money, String reason, Date date) {
         this.userId = userId;
         this.orderId = orderId;

@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface GarageRepository extends CrudRepository<Garage,Integer> {
-    List<Garage> findAllByAddress(String address);
+    List<Garage> findAllByAddressLike(String address);
     List<Garage> findAll();
 }

@@ -1,6 +1,10 @@
 package com.example.project.controller;
 
 import com.example.project.entity.Car;
+<<<<<<< HEAD
+=======
+
+>>>>>>> qihang
 import com.example.project.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -27,7 +31,7 @@ public class AdminController {
     }
 
 
-    //获取已经租出去的车，不管是个人还是私有,改成了未出租的车，方便你删除
+    //不管是个人还是私有,改成了未出租的车，方便你删除
     @RequestMapping(value = "/getRenderCar")
     public ResponseEntity<?> getRentedCar() {
         HashMap<String, Object> map = new HashMap<>();
@@ -54,7 +58,7 @@ public class AdminController {
     ) throws Exception {
         HashMap<String, Object> map = new
                 HashMap<>();
-        Car car = new Car(carNumber, -1, carType, brand, Double.parseDouble(price), image.getName(), address, 0);
+        Car car = new Car(carNumber, -1, carType, brand, Double.parseDouble(price), image.getOriginalFilename(), address, 0);
         adminService.addCar(car, image);
         map.put("success", "上传成功");
         return ResponseEntity.ok(map);
@@ -77,7 +81,7 @@ public class AdminController {
         return null;
     }
 
-    @RequestMapping(value = "continueRent")
+    @RequestMapping(value = "/continueRent")
     public void continueRent(@RequestParam("id") String carId) {
         adminService.continueRent(Integer.parseInt(carId));
     }
