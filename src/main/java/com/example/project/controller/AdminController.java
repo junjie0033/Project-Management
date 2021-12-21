@@ -55,7 +55,7 @@ public class AdminController {
     ) throws Exception {
         HashMap<String, Object> map = new
                 HashMap<>();
-        Car car = new Car(carNumber, -1, carType, brand, Double.parseDouble(price), image.getName(), address, 0);
+        Car car = new Car(carNumber, -1, carType, brand, Double.parseDouble(price), image.getOriginalFilename(), address, 0);
         adminService.addCar(car, image);
         map.put("success", "上传成功");
         return ResponseEntity.ok(map);
