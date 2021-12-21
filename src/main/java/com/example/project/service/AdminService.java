@@ -48,20 +48,10 @@ public class AdminService {
     }
 
     public void addCar(Car car, MultipartFile image) throws IOException {
-        moveImageToResource(image);
+        Utils.moveImageToResource(image);
         carRepository.save(car);
     }
 
-    private void moveImageToResource(MultipartFile image) throws IOException {
-        File uploadDir = new File("/usr/local/fengqihang/static/img/");
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
-        }
-        //TODO
-        File uploadFile = new File("/usr/local/fengqihang/static/img/"
-                + image.getOriginalFilename());
-        image.transferTo(uploadFile);
-    }
 
 
     public void returned(int carId) {
