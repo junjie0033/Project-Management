@@ -31,8 +31,7 @@ public class Car {
 
     private String address;
 
-
-    private int status;//待出租0 已预约1  已出租2
+    private int status;//待出租0 已预约1 已出租2 已归还3
 
     public Car() {
     }

@@ -26,6 +26,8 @@ public class Order {
 
     private double money;
 
+    private int status;  //未取车0 已取车1
+
     public Order() {
     }
 
@@ -37,8 +39,6 @@ public class Order {
         this.money = money;
         this.status = status;
     }
-
-    private int status;  //未取车0 已取车1
 
 
 }

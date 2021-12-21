@@ -26,7 +26,10 @@ public class User implements UserDetails {
 
     private String phone;
 
-    private int  balance;
+    private double balance;
+
+    //新增
+    private int age;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();
@@ -35,11 +38,12 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String password, String phone,int balance,Set<Authority> authorities) {
+    public User(String username, String password, String phone,int balance, int age, Set<Authority> authorities) {
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.balance=balance;
+        this.age = age;
         this.authorities = authorities;
     }
 
