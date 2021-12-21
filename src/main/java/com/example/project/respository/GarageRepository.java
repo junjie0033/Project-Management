@@ -4,6 +4,10 @@ import com.example.project.entity.Garage;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface GarageRepository extends CrudRepository<Garage,Integer> {
+    List<Garage> findAllByAddress(String address);
+    List<Garage> findAll();
 }

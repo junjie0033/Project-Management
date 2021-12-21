@@ -1,6 +1,5 @@
 package com.example.project.entity;
 
-
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -11,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Order {
+public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -26,12 +25,12 @@ public class Order {
 
     private double money;
 
-    private int status;  //未取车0 已取车1
 
-    public Order() {
+    private int status;  //未取车0 已取车1 已还车 2，已完成 3
+    public Record() {
     }
 
-    public Order(int carId, int renterId, Date date, int days, double money, int status) {
+    public Record(int carId, int renterId, Date date, int days, double money, int status) {
         this.carId = carId;
         this.renterId = renterId;
         this.date = date;
@@ -39,6 +38,4 @@ public class Order {
         this.money = money;
         this.status = status;
     }
-
-
 }

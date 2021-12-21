@@ -17,7 +17,7 @@ public class Car {
     private int id;
 
 
-    private String carNumber;
+    private String carNumber; //车牌号
 
     private int userId;  // -1 就是平台车
 
@@ -31,7 +31,9 @@ public class Car {
 
     private String address;
 
-    private int status;//待出租0 已预约1 已出租2 已归还3
+
+    private int status;//待出租0 已预约1  已出租2 已归还3
+
 
     public Car() {
     }

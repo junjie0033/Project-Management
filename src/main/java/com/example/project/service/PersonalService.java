@@ -16,14 +16,14 @@ import java.util.stream.Collectors;
 @Service
 public class PersonalService {
 
-    private OrderRepository orderRepository;
+    private RecordRepository orderRepository;
     private UserRepository userRepository;
     private CarRepository carRepository;
     private AppointmentRepository appointmentRepository;
     private FineRepository fineRepository;
 
     @Autowired
-    public PersonalService(OrderRepository orderRepository, UserRepository userRepository, CarRepository carRepository,
+    public PersonalService(RecordRepository orderRepository, UserRepository userRepository, CarRepository carRepository,
                            AppointmentRepository appointmentRepository, FineRepository fineRepository) {
         this.orderRepository = orderRepository;
         this.userRepository = userRepository;
@@ -32,8 +32,8 @@ public class PersonalService {
         this.fineRepository = fineRepository;
     }
 
-    public List<Order> getOrderByRenterId(int id) {
-        List<Order> orders = orderRepository.getOrderByRenterId(id);
+    public List<Record> getOrderByRenterId(int id) {
+        List<Record> orders = orderRepository.getOrderByRenterId(id);
         return orders.stream().filter(order -> order.getStatus() != 2).collect(Collectors.toList());
     }
 
@@ -62,7 +62,7 @@ public class PersonalService {
     }
 
     public boolean confirmReceive(int id) {
-        Order order = orderRepository.getOrderById(id);
+        Record order = orderRepository.getOrderById(id);
         order.setStatus(1);
         return true;
     }
@@ -76,9 +76,9 @@ public class PersonalService {
     public boolean confirmReturn(int carId, int userId) {
         Car car = carRepository.findById(carId);
         car.setStatus(3);
-        List<Order> orders = orderRepository.getOrderByCarId(carId);
+        List<Record> orders = orderRepository.getOrderByCarId(carId);
 
-        Order order = orders.stream().filter(order1 -> order1.getStatus() != 2).findFirst().get();
+        Record order = orders.stream().filter(order1 -> order1.getStatus() != 2).findFirst().get();
         order.setStatus(2);
         carRepository.save(car);
         orderRepository.save(order);
@@ -125,7 +125,7 @@ public class PersonalService {
 
         int orderId = fine.getOrderId();
 
-        Order order = orderRepository.getOrderById(orderId);
+        Record order = orderRepository.getOrderById(orderId);
 
         Car car = carRepository.findById(order.getCarId());
 

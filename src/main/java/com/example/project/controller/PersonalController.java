@@ -7,7 +7,7 @@ import com.example.project.controller.response.FineDetail;
 import com.example.project.entity.Appointment;
 import com.example.project.entity.Car;
 import com.example.project.entity.Fine;
-import com.example.project.entity.Order;
+import com.example.project.entity.Record;
 import com.example.project.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +36,7 @@ public class PersonalController {
      */
     @PostMapping("/getRent")
     public ResponseEntity<?> getOrders(@RequestParam("userId") Integer id) {
-        List<Order> orders = service.getOrderByRenterId(id);
+        List<Record> orders = service.getOrderByRenterId(id);
         HashMap<String, Object> map = new HashMap<>();
         map.put("message", "success");
         map.put("orders", orders);
@@ -46,7 +46,7 @@ public class PersonalController {
 
     @PostMapping("uploadCar")
     public ResponseEntity<?> uploadCar(@RequestBody HashMap<String, Object> map) {
-
+        return null;
     }
 
 
