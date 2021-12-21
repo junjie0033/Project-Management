@@ -23,7 +23,7 @@ public class GarageService {
     }
 
     public List<Garage> getGarage(String address) {
-        return garageRepository.findAllByAddress(address);
+        return garageRepository.findAllByAddressLike(address);
     }
 
     public List<Garage> getAllGarage() {
