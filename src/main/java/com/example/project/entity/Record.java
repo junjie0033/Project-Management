@@ -25,8 +25,7 @@ public class Record {
 
     private double money;
 
-    private int status;  //未取车0 已取车1 已还车 2
-
+    private int status;  //未取车0 已取车1 已还车 2，已完成 3
     public Record() {
     }
 

@@ -1,7 +1,6 @@
 package com.example.project.controller;
 
 import com.example.project.entity.Car;
-import com.example.project.entity.Records;
 import com.example.project.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;

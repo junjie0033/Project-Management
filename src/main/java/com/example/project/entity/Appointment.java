@@ -26,7 +26,8 @@ public class Appointment {
     private int days;  // 保留预约几天
 
     private double money;// 预约金 = 天数 * 固定值
-    private int status;  // 过期或者已取车作废
+
+    private int status;  // 过期或者已取车作废：正常已预约：0，异常/未及时付款/已取车：-1
 
     public Appointment() {
 

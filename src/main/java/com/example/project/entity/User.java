@@ -26,7 +26,7 @@ public class User implements UserDetails {
 
     private String phone;
 
-    private int  balance;
+    private double balance;
 
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();

@@ -3,7 +3,6 @@ package com.example.project.service;
 import com.example.project.entity.Car;
 import com.example.project.entity.Fine;
 import com.example.project.entity.Record;
-import com.example.project.entity.Records;
 import com.example.project.respository.CarRepository;
 import com.example.project.respository.FineRepository;
 import com.example.project.respository.RecordRepository;
