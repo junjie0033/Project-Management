@@ -13,6 +13,8 @@ import java.util.Map;
 public interface RecordRepository extends CrudRepository<Record,Integer> {
          Record getRecordByCarIdAndStatus(int carId,int status);
 
-         @Query(value = "select record.id,car.address,brand,username,record.money, record.date,car_number as carNumber from record,user,car where record.car_id=car.id and record.renter_id=user.id and car.user_id=-1 and record.status=1", nativeQuery = true)
+         @Query(value = "select record.id,car.id as carId,car.address,brand,username,record.money, record.date,car_number as carNumber from record,user,car where record.car_id=car.id and record.renter_id=user.id and car.user_id=-1 and record.status=1", nativeQuery = true)
          List<Map<String,Object>> getRecords();
+
+         Record findById(int id);
 }

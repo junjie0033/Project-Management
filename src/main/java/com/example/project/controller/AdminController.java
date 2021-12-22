@@ -39,7 +39,7 @@ public class AdminController {
 
     //删除未出租的车
     @RequestMapping(value = "/deleteCar")
-    public ResponseEntity<?> deleteCar(@Param("id") String id) {
+    public ResponseEntity<?> deleteCar(@RequestParam("id") String id) {
         adminService.deleteCar(Integer.parseInt(id));
         return null;
     }
@@ -66,27 +66,26 @@ public class AdminController {
         List<Map<String,Object>> records = adminService.getRecords();
         HashMap<String, Object> map = new HashMap<>();
         map.put("records", records);
-
         return ResponseEntity.ok(map);
     }
 
 
     //平台车辆归还
     @RequestMapping(value = "/returnCar")
-    public ResponseEntity<?> returnCar(@RequestParam("id") String carId) {
+    public ResponseEntity<?> returnCar(@RequestParam("carId") String carId) {
         adminService.returned(Integer.parseInt(carId));
         return null;
     }
 
     @RequestMapping(value = "/continueRent")
-    public void continueRent(@RequestParam("id") String carId) {
+    public void continueRent(@RequestParam("carId") String carId) {
         adminService.continueRent(Integer.parseInt(carId));
     }
 
 
     //罚款
     @RequestMapping(value = "/fine")
-    public ResponseEntity<?> fine(@Param("id") String orderId, @Param("money") String money, @Param("reason") String reason) {
+    public ResponseEntity<?> fine(@RequestParam("id") String orderId, @RequestParam("money") String money, @RequestParam("reason") String reason) {
         HashMap<String, Object> map = new HashMap<>();
         adminService.addFine(orderId, money, reason);
         map.put("success", "生成罚单成功");

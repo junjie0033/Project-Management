@@ -78,6 +78,9 @@ public class AdminService {
 
     public void addFine(String recordId,String money,String reason){
         Fine fine=new Fine(Integer.parseInt(recordId),Double.parseDouble(money),reason);
+        fine.setStatus(0);
+        int userId=recordRepository.findById(Integer.parseInt(recordId)).getRenterId();
+        fine.setUserId(userId);
         fineRepository.save(fine);
     }
 
