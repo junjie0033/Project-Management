@@ -1,6 +1,5 @@
 package com.example.project.service;
 
-import com.example.project.controller.request.CarRequest;
 import com.example.project.controller.request.InformationRequest;
 import com.example.project.controller.response.CarDetail;
 import com.example.project.controller.response.FineDetail;
@@ -64,6 +63,8 @@ public class PersonalService {
     public boolean confirmReceive(int id) {
         Record order = orderRepository.getOrderById(id);
         order.setStatus(1);
+        System.out.println(order.getStatus());
+        orderRepository.save(order);
         return true;
     }
 
@@ -86,7 +87,7 @@ public class PersonalService {
         if(userId != -1) {
             User user = userRepository.findById(userId);
             //advise double
-            user.setBalance(user.getBalance() + (int)(order.getMoney() * 0.95));
+            user.setBalance(user.getBalance() + order.getMoney() * 0.95);
         }
 
         return true;

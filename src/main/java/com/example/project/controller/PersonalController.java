@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,11 +32,12 @@ public class PersonalController {
 
     /**
      * order根据status分为正在进行的订单和已经完成的订单，即历史订单
-     * @param id
+     * @param
      * @return
      */
     @PostMapping("/getRent")
-    public ResponseEntity<?> getOrders(@RequestParam("userId") Integer id) {
+    public ResponseEntity<?> getOrders(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("userId");
         List<Record> orders = service.getOrderByRenterId(id);
         HashMap<String, Object> map = new HashMap<>();
         map.put("message", "success");
@@ -50,8 +52,9 @@ public class PersonalController {
     }
 
 
-    @PostMapping("/getMyAppointment ")
-    public ResponseEntity<?> getAppoint(@RequestParam("userId") Integer id) {
+    @PostMapping("/getMyAppointment")
+    public ResponseEntity<?> getAppoint(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("userId");
         List<Appointment> appointments = service.getAppointmentByRenterId(id);
         HashMap<String, Object> map = new HashMap<>();
         map.put("message", "success");
@@ -61,7 +64,8 @@ public class PersonalController {
     }
 
     @PostMapping("/getTicket")
-    public ResponseEntity<?> getFines(@RequestParam("userId") Integer id) {
+    public ResponseEntity<?> getFines(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("userId");
         List<Fine> tickets = service.getFineByUserId(id);
         HashMap<String, Object> map = new HashMap<>();
         map.put("message", "success");
@@ -84,7 +88,8 @@ public class PersonalController {
     }
 
     @PostMapping("/getMyCars")
-    public ResponseEntity<?> getMyCars(@RequestParam("user") Integer id) {
+    public ResponseEntity<?> getMyCars(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("user");
         HashMap<String, Object> map = new HashMap<>();
         List<Car> cars = service.getMyCars(id);
         map.put("message", "success");
@@ -94,7 +99,8 @@ public class PersonalController {
     }
 
     @PostMapping("/confirmReceive")
-    public ResponseEntity<?> confirmReceive(@RequestParam("carId") Integer id) {
+    public ResponseEntity<?> confirmReceive(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("carId");
         HashMap<String, Object> map = new HashMap<>();
 
         if(service.confirmReceive(id)) {
@@ -107,7 +113,9 @@ public class PersonalController {
     }
 
     @PostMapping("/confirmReturn")
-    public ResponseEntity<?> confirmReturn(@RequestParam("id") Integer id, @RequestParam("userId") Integer userId) {
+    public ResponseEntity<?> confirmReturn(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("id");
+        int userId = (Integer) params.get("userId");
         HashMap<String, Object> map = new HashMap<>();
         if(service.confirmReturn(id, userId)) {
             map.put("message", "success");
@@ -119,7 +127,8 @@ public class PersonalController {
     }
 
     @PostMapping("/continueRent")
-    public ResponseEntity<?> continueRent(@RequestParam("id") Integer id) {
+    public ResponseEntity<?> continueRent(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("id");
         HashMap<String, Object> map = new HashMap<>();
         if(service.continueRent(id)) {
             map.put("message", "success");
@@ -137,7 +146,8 @@ public class PersonalController {
     }
 
     @PostMapping("/carDetail")
-    public ResponseEntity<?> carDetail(@RequestParam Integer id) {
+    public ResponseEntity<?> carDetail(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("carId");
         HashMap<String, Object> map = new HashMap<>();
 
         CarDetail detail = service.getCarDetail(id);
@@ -161,7 +171,8 @@ public class PersonalController {
     }
 
     @PostMapping("/fineDetail")
-    public ResponseEntity<?> fineDetail(@RequestParam("id") Integer id) {
+    public ResponseEntity<?> fineDetail(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("id");
         HashMap<String, Object> map = new HashMap<>();
 
         FineDetail detail = service.getFineDetail(id);
@@ -173,7 +184,8 @@ public class PersonalController {
     }
 
     @PostMapping("getCar")
-    public ResponseEntity<?> getCar(@RequestParam("carId") Integer id) {
+    public ResponseEntity<?> getCar(@RequestBody HashMap<String, Object> params) {
+        int id = (Integer) params.get("carId");
         HashMap<String, Object> map = new HashMap<>();
 
         Car car = service.getCar(id);

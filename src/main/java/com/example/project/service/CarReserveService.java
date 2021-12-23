@@ -1,9 +1,11 @@
 package com.example.project.service;
 
 import com.example.project.entity.Appointment;
+import com.example.project.entity.Car;
 import com.example.project.entity.Record;
 import com.example.project.entity.User;
 import com.example.project.respository.AppointmentRepository;
+import com.example.project.respository.CarRepository;
 import com.example.project.respository.RecordRepository;
 import com.example.project.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,14 @@ public class CarReserveService {
     @Autowired
     private final UserRepository userRepository;
 
-    public CarReserveService(RecordRepository recordRepository, AppointmentRepository appointmentRepository, UserRepository userRepository) {
+    @Autowired
+    private final CarRepository carRepository;
+
+    public CarReserveService(RecordRepository recordRepository, AppointmentRepository appointmentRepository, UserRepository userRepository, CarRepository carRepository) {
         this.recordRepository = recordRepository;
         this.appointmentRepository = appointmentRepository;
         this.userRepository = userRepository;
+        this.carRepository = carRepository;
     }
 
     @Transactional
@@ -41,6 +47,10 @@ public class CarReserveService {
             user.setBalance(user.getBalance()+appointMoney);
             userRepository.save(user);
         }
+
+        Car car = carRepository.findById(carId);
+        car.setStatus(2);
+        carRepository.save(car);
     }
 
 }

@@ -60,9 +60,7 @@ public class AuthController {
             }
 
             map.put("token", jwtTokenUtil.generateToken(user));
-            map.put("message", "success");
-            map.put("id", user.getId());
-            map.put("username", user.getUsername());
+            map.put("user", user);
             map.put("status", 200);
 
         return ResponseEntity.ok(map);
@@ -89,10 +87,8 @@ public class AuthController {
         final Authentication authentication = authenticationManager.authenticate(userToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         map.put("token", jwtTokenUtil.generateToken(user));
-        map.put("message", "登陆成功，欢迎" + user.getUsername() + "回来");
-        map.put("id", user.getId());
-        map.put("username", user.getUsername() + "");
-        map.put("phone", user.getPhone());
+        map.put("message", "success");
+        map.put("user", user);
 
         return ResponseEntity.ok(map);
 

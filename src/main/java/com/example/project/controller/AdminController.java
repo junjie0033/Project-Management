@@ -1,10 +1,6 @@
 package com.example.project.controller;
 
 import com.example.project.entity.Car;
-<<<<<<< HEAD
-=======
-
->>>>>>> qihang
 import com.example.project.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;

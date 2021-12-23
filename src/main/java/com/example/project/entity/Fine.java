@@ -20,7 +20,7 @@ public class Fine {
 
     private int orderId;
 
-    private Date date;
+    //private Date date;
     private double money;
     private String reason;
 
@@ -42,7 +42,7 @@ public class Fine {
         this.orderId = orderId;
         this.money = money;
         this.reason = reason;
-        this.date = date;
+        //this.date = date;
     }
 
 
